@@ -3,3 +3,4 @@ airbnb/profiles.yml
 airbnb/.user.yml
 logs/dbt.log
 **/.gitkeep
+airbnb/package-lock.yml
