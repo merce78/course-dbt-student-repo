@@ -42,7 +42,7 @@ models:
       enforced: true
   columns:
   - name: host_id
-    descrition: Host identifier.
+    description: Host identifier.
     data_type: integer
     data_tests:
     - unique
