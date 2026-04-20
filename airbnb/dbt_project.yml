@@ -10,18 +10,18 @@ profile: 'airbnb'
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
-model-paths: [ "models" ]
-analysis-paths: [ "analyses" ]
-test-paths: [ "tests" ]
-seed-paths: [ "seeds" ]
-macro-paths: [ "macros" ]
-snapshot-paths: [ "snapshots" ]
-asset-paths: [ "assets" ]
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+asset-paths: ["assets"]
 
 clean-targets:
 # directories to be removed by `dbt clean`
-- "target"
-- "dbt_packages"
+  - "target"
+  - "dbt_packages"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -30,14 +30,14 @@ clean-targets:
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 on-run-start:
-- "CREATE TABLE IF NOT EXISTS {{ target.schema }}.audit_log ( model_name STRING, run_timestamp TIMESTAMP )"
+  - "CREATE TABLE IF NOT EXISTS {{ target.schema }}.audit_log ( model_name STRING, run_timestamp TIMESTAMP )"
 
 models:
   airbnb:
     +grants:
-      select: [ "transform", "reporter" ]
+      select: ["transform", "reporter"]
     +post-hook:
-    - "INSERT INTO {{target.schema}}.audit_log VALUES ('{{this}}', CURRENT_TIMESTAMP)"
+      - "INSERT INTO {{target.schema}}.audit_log VALUES ('{{this}}', CURRENT_TIMESTAMP)"
     # Config indicated by + and applies to all files under models/example/
     +materialized: view
     dim:
@@ -48,3 +48,5 @@ models:
 data_tests:
   +store_failures: true
   +schema: _test_failures
+flags:
+  require_generic_test_arguments_property: true
