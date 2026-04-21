@@ -45,6 +45,9 @@ models:
     src:
       +materialized: ephemeral
 
+vars:
+  user_name: default merce78
+
 data_tests:
   +store_failures: true
   +schema: _test_failures
