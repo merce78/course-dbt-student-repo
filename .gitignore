@@ -4,3 +4,6 @@ airbnb/.user.yml
 logs/dbt.log
 **/.gitkeep
 airbnb/package-lock.yml
+my_dbt_dagster_project/.tmp_dagster_home*
+**/*.pyc
+
